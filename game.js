@@ -592,17 +592,15 @@ function updateUI(game) {
                 accCostEl.textContent = `Accumulated: $${game.accumulated_cost.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
                 accCostEl.className = `hud-value ${accColor}`;
                 
-                // Budget info
+                // Budget info (budget amount removed since it's shown at top of Round Info)
                 const budgetInfo = document.getElementById('budgetInfo');
                 const budgetDiff = DRILL_COST_BUDGET - game.accumulated_cost;
                 if (budgetDiff >= 0) {
                     budgetInfo.innerHTML = `
-                        <div class="hud-text">Budget: $${DRILL_COST_BUDGET.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
                         <div class="hud-value text-green">Under budget: $${budgetDiff.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
                     `;
                 } else {
                     budgetInfo.innerHTML = `
-                        <div class="hud-text">Budget: $${DRILL_COST_BUDGET.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
                         <div class="hud-value text-red">Over budget: $${Math.abs(budgetDiff).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
                         <div class="hud-text text-red">Team is losing money!</div>
                     `;
@@ -615,22 +613,21 @@ function updateUI(game) {
         aimSection.style.display = 'block';
         
         if (game.accumulated_cost === 0 && game.tries_remaining === 3) {
-            document.getElementById('budgetInitial').textContent = `Budget: $${DRILL_COST_BUDGET.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+            // Budget is now shown at top of Round Info, so hide this section
+            document.getElementById('budgetInitial').textContent = '';
             document.getElementById('budgetInitial').className = 'hud-text';
         } else if (game.tries_remaining < 3) {
-            // Show accumulated cost while aiming
+            // Show accumulated cost while aiming (budget removed since it's at top)
             const budgetInitial = document.getElementById('budgetInitial');
             const budgetDiff = DRILL_COST_BUDGET - game.accumulated_cost;
             if (budgetDiff >= 0) {
                 budgetInitial.innerHTML = `
                     <div>Accumulated: $${game.accumulated_cost.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
-                    <div>Budget: $${DRILL_COST_BUDGET.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
                     <div class="text-green">Under budget: $${budgetDiff.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
                 `;
             } else {
                 budgetInitial.innerHTML = `
                     <div>Accumulated: $${game.accumulated_cost.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
-                    <div>Budget: $${DRILL_COST_BUDGET.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
                     <div class="text-red">Over budget: $${Math.abs(budgetDiff).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
                     <div class="text-red">Team is losing money!</div>
                 `;
