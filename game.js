@@ -658,6 +658,31 @@ function gameLoop(currentTime) {
     requestAnimationFrame(gameLoop);
 }
 
+// ----------------- Help Modal -----------------
+const helpModal = document.getElementById('helpModal');
+const helpBtn = document.getElementById('helpBtn');
+const closeHelpBtn = document.getElementById('closeHelpBtn');
+const closeHelpBtn2 = document.getElementById('closeHelpBtn2');
+
+function openHelp() {
+    helpModal.classList.add('active');
+}
+
+function closeHelp() {
+    helpModal.classList.remove('active');
+}
+
+helpBtn.addEventListener('click', openHelp);
+closeHelpBtn.addEventListener('click', closeHelp);
+closeHelpBtn2.addEventListener('click', closeHelp);
+
+// Close modal when clicking outside
+helpModal.addEventListener('click', (e) => {
+    if (e.target === helpModal) {
+        closeHelp();
+    }
+});
+
 // Event listeners
 document.getElementById('drillBtn').addEventListener('click', () => {
     if (game.state === "aim") {
@@ -675,7 +700,11 @@ document.getElementById('newRoundBtn').addEventListener('click', () => {
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        // Could add pause menu here
+        // Close help modal if open
+        if (helpModal.classList.contains('active')) {
+            closeHelp();
+            return;
+        }
     } else if (game.state === "aim") {
         if (e.key === 'ArrowLeft') {
             game.angle = clamp(game.angle - 1.0, ANGLE_MIN, ANGLE_MAX);

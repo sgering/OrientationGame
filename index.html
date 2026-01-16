@@ -11,6 +11,7 @@
         <div class="controls">
             <button id="drillBtn" class="btn">DRILL</button>
             <button id="newRoundBtn" class="btn">NEW ROUND</button>
+            <button id="helpBtn" class="btn">HELP</button>
         </div>
         
         <div class="game-area">
@@ -77,6 +78,103 @@
                     <div class="hud-text">Press SPACE to drill</div>
                     <div id="budgetInitial" class="hud-text"></div>
                 </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Help Modal Overlay -->
+    <div id="helpModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">CORE ORIENTATION — DRILLING SIMULATION</h2>
+                <button id="closeHelpBtn" class="modal-close-btn">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Story Section -->
+                <div class="help-section">
+                    <h3 class="help-section-title text-cyan">THE SCENARIO</h3>
+                    <div class="help-text">
+                        <p>You are a drilling engineer working for a mining operation. Your task is to accurately drill into orebody deposits located deep underground. Each drill attempt costs money, and you have a limited budget of <strong class="text-yellow">$500,000</strong> per round.</p>
+                        <p>Your goal: Hit the target orebody in as few attempts as possible while staying within budget. You have <strong class="text-yellow">3 tries</strong> per round to succeed. Miss the target, and you'll waste valuable resources. Hit it, and you'll strike it rich!</p>
+                        <p>The orebody appears as a <strong class="text-yellow">yellow blob</strong> at various depths and horizontal positions. Your drilling rig is positioned on the surface, and you must calculate the correct angle to intersect the target.</p>
+                    </div>
+                </div>
+                
+                <!-- How to Play Section -->
+                <div class="help-section">
+                    <h3 class="help-section-title text-cyan">HOW TO PLAY</h3>
+                    <div class="help-text">
+                        <ol class="help-list">
+                            <li><strong>Adjust the Angle:</strong> Use Left/Right arrow keys to rotate the drill angle between -180° and 0° (where -90° is straight down).</li>
+                            <li><strong>Check the Target:</strong> Review the target depth, X position, and radius in the right panel.</li>
+                            <li><strong>Calculate:</strong> Use the "1° miss" helper to estimate how far off you'll be at the target depth.</li>
+                            <li><strong>Drill:</strong> Press SPACE or click DRILL to start drilling. The drill will extend along your chosen angle.</li>
+                            <li><strong>Result:</strong> If you hit the yellow orebody blob, you win! If you miss, you'll see how far off you were and can try again.</li>
+                            <li><strong>Budget:</strong> Watch your costs carefully. Each meter drilled costs $300. Stay under the $500,000 budget!</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <!-- Controls Section -->
+                <div class="help-section">
+                    <h3 class="help-section-title text-cyan">CONTROLS</h3>
+                    <div class="help-text">
+                        <div class="controls-grid">
+                            <div class="control-item">
+                                <span class="control-key text-yellow">← →</span>
+                                <span class="control-desc">Adjust angle by ±1°</span>
+                            </div>
+                            <div class="control-item">
+                                <span class="control-key text-yellow">SPACE</span>
+                                <span class="control-desc">Start drilling / Try again</span>
+                            </div>
+                            <div class="control-item">
+                                <span class="control-key text-yellow">N</span>
+                                <span class="control-desc">New round</span>
+                            </div>
+                            <div class="control-item">
+                                <span class="control-key text-yellow">ESC</span>
+                                <span class="control-desc">Close this help menu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Visual Indicators Section -->
+                <div class="help-section">
+                    <h3 class="help-section-title text-cyan">VISUAL INDICATORS</h3>
+                    <div class="help-text">
+                        <ul class="help-list">
+                            <li><strong class="text-cyan">Cyan/White Line:</strong> Surface handle showing your current drill angle</li>
+                            <li><strong class="text-orange">Orange Line:</strong> Actual drill path during drilling</li>
+                            <li><strong class="text-yellow">Yellow Blob:</strong> Target orebody to hit</li>
+                            <li><strong class="text-cyan">Cyan Circle:</strong> Hit point when you successfully intersect the target</li>
+                            <li><strong class="text-green">Green Text:</strong> Success, under budget, or good status</li>
+                            <li><strong class="text-yellow">Yellow Text:</strong> Warning, acceptable status, or tries remaining</li>
+                            <li><strong class="text-red">Red Text:</strong> Failure, over budget, or critical status</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Tips Section -->
+                <div class="help-section">
+                    <h3 class="help-section-title text-cyan">PRO TIPS</h3>
+                    <div class="help-text">
+                        <ul class="help-list">
+                            <li>Use the "1° miss" calculation to estimate accuracy. At 500m depth, 1° ≈ 8.7m horizontal offset.</li>
+                            <li>Smaller angles (closer to -90°) drill more vertically. Larger angles (closer to 0°) drill more horizontally.</li>
+                            <li>Consider both horizontal (X) and vertical (depth) distance when calculating your angle.</li>
+                            <li>If you're over budget, you're losing money! Try to hit the target in fewer attempts.</li>
+                            <li>The target radius varies (5-20m), so you have some margin for error on larger targets.</li>
+                            <li>Watch the miss distance after each attempt to refine your next angle.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button id="closeHelpBtn2" class="btn">CLOSE</button>
             </div>
         </div>
     </div>
