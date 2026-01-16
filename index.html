@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Orientation — Guess the Angle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <button id="drillBtn" class="btn">DRILL</button>
+            <button id="newRoundBtn" class="btn">NEW ROUND</button>
+        </div>
+        
+        <div class="game-area">
+            <canvas id="gameCanvas"></canvas>
+            
+            <!-- Left HUD Panel -->
+            <div class="hud-panel left-panel">
+                <div class="hud-title">GUESS THE ANGLE</div>
+                <div class="hud-text">Rotate the small surface line, then DRILL.</div>
+                
+                <div class="hud-section">
+                    <div class="hud-label">CONTROLS</div>
+                    <div class="hud-text">Left/Right Arrow: ±1°</div>
+                    <div class="hud-text">Space: DRILL</div>
+                    <div class="hud-text">N: New Round</div>
+                    <div class="hud-text">Angle: -180° .. 0°</div>
+                </div>
+                
+                <div class="hud-section">
+                    <div class="hud-label">ANGLE</div>
+                    <div id="angleDisplay" class="hud-value">-90.0°</div>
+                </div>
+                
+                <div class="hud-section">
+                    <div class="hud-label">1° MISS @ <span id="targetDepth">0</span> M</div>
+                    <div class="hud-text">≈ <span id="miss1deg">0.00</span> m</div>
+                </div>
+                
+                <div class="hud-section">
+                    <div class="hud-label">TRIES</div>
+                    <div id="triesDisplay" class="hud-value">3/3</div>
+                </div>
+                
+                <div class="hud-section">
+                    <div class="hud-label">STATE</div>
+                    <div id="stateDisplay" class="hud-value">AIM</div>
+                </div>
+            </div>
+            
+            <!-- Right HUD Panel -->
+            <div class="hud-panel right-panel">
+                <div class="hud-title">ROUND INFO</div>
+                <div class="hud-text">Target depth: <span id="targetDepthInfo">0</span> m</div>
+                <div class="hud-text">Target X: <span id="targetXInfo">0</span> m</div>
+                <div class="hud-text">Radius: <span id="targetRadiusInfo">0</span> m</div>
+                
+                <div id="resultSection" class="hud-section" style="display: none;">
+                    <div id="resultText" class="hud-value"></div>
+                    <div id="triesLeftText" class="hud-text"></div>
+                    <div id="tryAgainInstruction" class="hud-text" style="display: none;">Press SPACE to try again</div>
+                    <div id="newRoundInstruction" class="hud-text" style="display: none;">Press N for new round</div>
+                    <div id="missDistanceText" class="hud-text"></div>
+                </div>
+                
+                <div id="costSection" class="hud-section" style="display: none;">
+                    <div class="hud-text">Path length: <span id="pathLength">0.00</span> m</div>
+                    <div id="attemptCost" class="hud-value"></div>
+                    <div class="hud-text">($300.00/m)</div>
+                    <div id="accumulatedCost" class="hud-value"></div>
+                    <div id="budgetInfo" class="hud-section"></div>
+                </div>
+                
+                <div id="aimSection" class="hud-section">
+                    <div class="hud-text">Press SPACE to drill</div>
+                    <div id="budgetInitial" class="hud-text"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+</body>
+</html>

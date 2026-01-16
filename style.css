@@ -1,0 +1,152 @@
+/* Visual Design Specification for Drill Pilot Game */
+/* Dark, technical, industrial aesthetic */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Consolas, 'Courier New', monospace;
+    background: #0a0c10;
+    color: rgb(230, 235, 245);
+    overflow: hidden;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    gap: 16px;
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.btn {
+    background: linear-gradient(135deg, #1a1d26 0%, #282c3a 100%);
+    border: 2px solid #3a4055;
+    border-radius: 8px;
+    color: #e6ebf5;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-family: 'Segoe UI', Consolas, 'Courier New', monospace;
+    cursor: pointer;
+    min-width: 200px;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #252a38 0%, #3a4055 100%);
+    border-color: #6eb4ff;
+    box-shadow: 0 0 20px rgba(110, 180, 255, 0.25);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.game-area {
+    position: relative;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 0;
+}
+
+#gameCanvas {
+    border: 2px solid #282c3a;
+    border-radius: 4px;
+    box-shadow: 0 0 40px rgba(110, 180, 255, 0.15);
+    background: rgb(16, 18, 24);
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.hud-panel {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.55);
+    padding: 10px;
+    line-height: 20px;
+    font-size: 16px;
+    font-family: Consolas, 'Courier New', monospace;
+    color: rgb(230, 235, 245);
+}
+
+.left-panel {
+    top: 10px;
+    left: 10px;
+    width: 320px;
+}
+
+.right-panel {
+    top: 10px;
+    right: 10px;
+    width: 300px;
+}
+
+.hud-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(230, 235, 245);
+    margin-bottom: 8px;
+}
+
+.hud-section {
+    margin-top: 16px;
+}
+
+.hud-label {
+    font-size: 16px;
+    color: rgb(230, 235, 245);
+    margin-bottom: 4px;
+}
+
+.hud-text {
+    font-size: 16px;
+    color: #8a90a0;
+    margin-bottom: 4px;
+}
+
+.hud-value {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+/* Color classes for status */
+.text-cyan {
+    color: rgb(110, 180, 255);
+}
+
+.text-green {
+    color: rgb(70, 210, 120);
+}
+
+.text-yellow {
+    color: rgb(220, 200, 80);
+}
+
+.text-red {
+    color: rgb(230, 80, 90);
+}
+
+.text-orange {
+    color: rgb(255, 180, 110);
+}
+
+/* Text shadows for important text */
+.hud-value.text-cyan,
+.hud-value.text-green,
+.hud-value.text-yellow,
+.hud-value.text-red {
+    text-shadow: 0 0 3px currentColor;
+}
